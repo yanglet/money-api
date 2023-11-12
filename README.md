@@ -1,2 +1,3 @@
-# money-api
-입금, 송금, 송금 이력 조회 API
+# Money-api
+
+송금 API, 송금 목록 조회 API, 머니 충전 API FG
