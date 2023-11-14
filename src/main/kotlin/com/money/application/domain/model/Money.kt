@@ -1,7 +1,7 @@
 package com.money.application.domain.model
 
 data class Money(
-    private val amount: Long
+    private var amount: Long
 ) {
 
     companion object {
@@ -12,14 +12,14 @@ data class Money(
 
     fun isPositiveOrZero(): Boolean = amount >= 0
 
-    fun minus(money: Money): Money {
-        val amount = this.amount - money.amount
-        return Money(amount)
+    fun isGreaterThan(money: Money): Boolean = this.amount > money.amount
+
+    fun minus(money: Money) {
+        this.amount -= money.amount
     }
 
-    fun plus(money: Money): Money {
-        val amount = this.amount + money.amount
-        return Money(amount)
+    fun plus(money: Money) {
+        this.amount += money.amount
     }
 
 }
