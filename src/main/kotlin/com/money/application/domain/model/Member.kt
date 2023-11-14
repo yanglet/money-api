@@ -1,8 +1,8 @@
 package com.money.application.domain.model
 
 data class Member(
-    private val memberNo: Long,
-    private val status: MemberStatus
+    private var memberNo: Long,
+    private var status: MemberStatus
 ) {
 
     companion object {

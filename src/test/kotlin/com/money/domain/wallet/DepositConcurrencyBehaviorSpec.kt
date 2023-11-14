@@ -1,32 +1,34 @@
 package com.money.domain.wallet
 
-import com.money.domain.member.entity.*
-import com.money.domain.member.repository.*
-import com.money.domain.wallet.entity.*
-import com.money.domain.wallet.exception.*
-import com.money.domain.wallet.repository.*
-import com.money.domain.wallet.service.*
-import com.money.domain.wallet.service.dto.*
-import io.kotest.core.spec.style.*
-import io.kotest.matchers.*
+import com.money.adapter.out.persistence.jpa.MemberJpaEntity
+import com.money.adapter.out.persistence.jpa.MemberJpaRepository
+import com.money.adapter.out.persistence.jpa.WalletJpaRepository
+import com.money.application.domain.model.Money
+import com.money.application.domain.usecase.DepositUseCase
+import com.money.application.port.`in`.dto.DepositCommand
+import com.money.common.exception.DataNotFoundException
+import com.money.domain.wallet.entity.WalletJpaEntity
+import io.kotest.core.spec.style.BehaviorSpec
+import io.kotest.matchers.shouldBe
 import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.data.repository.*
-import org.springframework.test.context.*
-import java.util.concurrent.*
+import org.springframework.data.repository.findByIdOrNull
+import org.springframework.test.context.TestPropertySource
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.Executors
 
 @SpringBootTest
 @TestPropertySource(properties = ["spring.profiles.active = test"])
 class DepositConcurrencyBehaviorSpec(
-    private val memberRepository: MemberRepository,
+    private val memberRepository: MemberJpaRepository,
 
-    private val walletRepository: WalletRepository,
-    private val walletService: WalletService
+    private val walletRepository: WalletJpaRepository,
+    private val walletService: DepositUseCase
 ) : BehaviorSpec({
 
     Given("지갑 금액이 0원 일 때") {
-        val member = memberRepository.save(Member())
+        val member = memberRepository.save(MemberJpaEntity())
         val walletNo = walletRepository.save(
-            Wallet(member = member, balance = 0L, maximumBalance = 100000L)
+            WalletJpaEntity(member = member, balance = 0L, maximumBalance = 100000L)
         ).walletNo
 
         When("1000원씩 10번의 충전을 동시에 시도할 경우") {
@@ -38,7 +40,7 @@ class DepositConcurrencyBehaviorSpec(
                     try {
                         walletService.deposit(
                             member.memberNo,
-                            WalletDepositRequest(amount = 1000L)
+                            DepositCommand(Money.of(1000))
                         )
                     } finally {
                         latch.countDown()
@@ -49,7 +51,7 @@ class DepositConcurrencyBehaviorSpec(
             latch.await()
 
             Then("보유 금액은 10000원이 된다.") {
-                val wallet = walletRepository.findByIdOrNull(walletNo) ?: throw WalletNotFoundException("")
+                val wallet = walletRepository.findByIdOrNull(walletNo) ?: throw DataNotFoundException("")
 
                 wallet.balance shouldBe 10000L
             }

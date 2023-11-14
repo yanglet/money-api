@@ -1,10 +1,12 @@
 package com.money.application.domain.model
 
+import com.money.application.domain.exception.BalanceMaxedOutException
+
 data class Wallet(
-    private val walletNo: Long,
-    private val member: Member,
-    private val balance: Money,
-    private val maximumBalance: Money
+    private var walletNo: Long,
+    private var member: Member,
+    private var balance: Money,
+    private var maximumBalance: Money
 ) {
 
     companion object {
@@ -28,7 +30,12 @@ data class Wallet(
 
     fun getMaximumBalance() = this.maximumBalance
 
+    private fun isGreaterThanMaximumBalance(money: Money) = money.isGreaterThan(this.maximumBalance)
+
     fun deposit(money: Money) {
+        if (isGreaterThanMaximumBalance(money)) {
+            throw BalanceMaxedOutException("금액의 최대 한도를 초과할 수 없습니다.")
+        }
         this.balance.plus(money)
     }
 
