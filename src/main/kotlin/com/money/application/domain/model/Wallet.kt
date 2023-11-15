@@ -33,7 +33,8 @@ data class Wallet(
     private fun isGreaterThanMaximumBalance(money: Money) = money.isGreaterThan(this.maximumBalance)
 
     fun deposit(money: Money) {
-        if (isGreaterThanMaximumBalance(money)) {
+        val afterBalance = Money.add(this.balance, money)
+        if (isGreaterThanMaximumBalance(afterBalance)) {
             throw BalanceMaxedOutException("금액의 최대 한도를 초과할 수 없습니다.")
         }
         this.balance.plus(money)

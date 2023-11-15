@@ -22,4 +22,5 @@ class DepositController(
         val command = DepositCommand(Money.of(request.amount))
         depositPort.deposit(memberNo, command)
     }
+
 }
