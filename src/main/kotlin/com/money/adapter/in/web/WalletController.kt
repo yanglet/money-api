@@ -8,13 +8,15 @@ import com.money.common.WebAdapter
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
+import org.springframework.web.bind.annotation.RequestMapping
 
 @WebAdapter
-class DepositController(
+@RequestMapping("/v1/wallets")
+class WalletController(
     private val depositPort: DepositPort
 ) {
 
-    @PostMapping("/v1/wallets/{memberNo}/deposit")
+    @PostMapping("/{memberNo}/deposit")
     fun deposit(
         @PathVariable memberNo: Long,
         @RequestBody request: DepositRequest
