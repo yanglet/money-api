@@ -6,8 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Lock
 import org.springframework.data.jpa.repository.Query
 
-interface WalletJpaRepository : JpaRepository<WalletJpaEntity, Long>{
+interface WalletJpaRepository : JpaRepository<WalletJpaEntity, Long> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
+//    @QueryHints(QueryHint(name = "", value = "")) LockTimeout Setting
     @Query("""
         SELECT wallet 
         FROM WalletJpaEntity wallet
