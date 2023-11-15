@@ -1,7 +1,7 @@
 package com.money.domain.wallet.entity
 
 import com.money.adapter.out.persistence.jpa.MemberJpaEntity
-import com.money.common.jpa.BaseEntity
+import com.money.adapter.out.persistence.jpa.common.BaseEntity
 import jakarta.persistence.*
 
 @Entity

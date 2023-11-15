@@ -1,4 +1,4 @@
-package com.money.common.jpa
+package com.money.adapter.out.persistence.jpa.common
 
 import jakarta.persistence.*
 import org.springframework.data.annotation.*
