@@ -6,6 +6,10 @@ data class Money(
 
     companion object {
         fun of(amount: Long) = Money(amount)
+
+        fun subtract(a: Money, b: Money) = of(a.amount - b.amount)
+
+        fun add(a: Money, b: Money) = of(a.amount + b.amount)
     }
 
     fun getAmount() = this.amount
