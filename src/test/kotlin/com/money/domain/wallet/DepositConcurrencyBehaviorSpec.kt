@@ -4,7 +4,7 @@ import com.money.adapter.out.persistence.jpa.MemberJpaEntity
 import com.money.adapter.out.persistence.jpa.MemberJpaRepository
 import com.money.adapter.out.persistence.jpa.WalletJpaRepository
 import com.money.application.domain.model.Money
-import com.money.application.domain.usecase.DepositUseCase
+import com.money.application.domain.usecase.DepositService
 import com.money.application.port.`in`.dto.DepositCommand
 import com.money.common.exception.DataNotFoundException
 import com.money.domain.wallet.entity.WalletJpaEntity
@@ -22,7 +22,7 @@ class DepositConcurrencyBehaviorSpec(
     private val memberRepository: MemberJpaRepository,
 
     private val walletRepository: WalletJpaRepository,
-    private val walletService: DepositUseCase
+    private val walletService: DepositService
 ) : BehaviorSpec({
 
     Given("지갑 금액이 0원 일 때") {

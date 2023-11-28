@@ -2,7 +2,7 @@ package com.money.adapter.`in`.web
 
 import com.money.adapter.`in`.web.dto.DepositRequest
 import com.money.application.domain.model.Money
-import com.money.application.port.`in`.DepositPort
+import com.money.application.port.`in`.DepositUseCase
 import com.money.application.port.`in`.dto.DepositCommand
 import com.money.common.WebAdapter
 import org.springframework.web.bind.annotation.PathVariable
@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping
 @WebAdapter
 @RequestMapping("/v1/wallets")
 class WalletController(
-    private val depositPort: DepositPort
+    private val depositUseCase: DepositUseCase
 ) {
 
     @PostMapping("/{memberNo}/deposit")
@@ -22,7 +22,7 @@ class WalletController(
         @RequestBody request: DepositRequest
     ) {
         val command = DepositCommand(Money.of(request.amount))
-        depositPort.deposit(memberNo, command)
+        depositUseCase.deposit(memberNo, command)
     }
 
 }
