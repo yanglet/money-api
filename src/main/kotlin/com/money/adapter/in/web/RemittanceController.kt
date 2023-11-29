@@ -6,6 +6,7 @@ import com.money.application.port.`in`.RemitUseCase
 import com.money.application.port.`in`.dto.RemitCommand
 import com.money.common.WebAdapter
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 
 @WebAdapter
@@ -15,7 +16,7 @@ class RemittanceController(
 ) {
 
     @PostMapping("/save")
-    fun remit(request: RemitRequest) {
+    fun remit(@RequestBody request: RemitRequest) {
         val command = RemitCommand(request.to, request.from, Money.of(request.amount))
         remitUseCase.remit(command)
     }
