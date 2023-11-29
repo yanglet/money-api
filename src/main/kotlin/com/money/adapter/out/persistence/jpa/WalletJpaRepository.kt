@@ -15,4 +15,6 @@ interface WalletJpaRepository : JpaRepository<WalletJpaEntity, Long> {
         WHERE wallet.member = :member
     """)
     fun findByMemberWithLock(member: MemberJpaEntity): WalletJpaEntity?
+
+    fun findByMember(member: MemberJpaEntity): WalletJpaEntity?
 }

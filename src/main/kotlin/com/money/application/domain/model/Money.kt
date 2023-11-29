@@ -16,6 +16,10 @@ data class Money(
 
     fun isPositiveOrZero(): Boolean = amount >= 0
 
+    fun isPositive(): Boolean = amount > 0
+
+    fun isNegative(): Boolean = amount < 0
+
     fun isGreaterThan(money: Money): Boolean = this.amount > money.amount
 
     fun minus(money: Money) {

@@ -1,5 +1,6 @@
 package com.money.application.domain
 
+import com.money.application.domain.exception.BalanceInsufficientException
 import com.money.application.domain.exception.BalanceMaxedOutException
 import com.money.application.domain.model.Member
 import com.money.application.domain.model.MemberStatus
@@ -38,6 +39,37 @@ class WalletBehaviorSpec : BehaviorSpec({
                 wallet.deposit(amount)
 
                 wallet.getBalance().getAmount() shouldBe 11000
+            }
+        }
+    }
+
+    Given("withdraw") {
+        val member = Member.of(
+            memberNo = 1,
+            MemberStatus.ACTIVE
+        )
+        val wallet = Wallet.of(
+            walletNo = 1,
+            member = member,
+            balance = Money.of(10000),
+            maximumBalance = Money.of(15000)
+        )
+
+        When("잔액을 초과하면") {
+            val amount = Money.of(12000)
+
+            Then("BalanceInsufficientException 예외가 발생한다.") {
+                shouldThrow<BalanceInsufficientException> { wallet.withdraw(amount) }
+            }
+        }
+
+        When("잔액을 초과하지 않으면") {
+            val amount = Money.of(10000)
+
+            Then("성공한다.") {
+                wallet.withdraw(amount)
+
+                wallet.getBalance().getAmount() shouldBe 0
             }
         }
     }

@@ -14,6 +14,22 @@ class MoneyAnnotationSpec : AnnotationSpec() {
     }
 
     @Test
+    fun isPositive() {
+        val money = Money.of(10000)
+        val zeroMoney = Money.of(0)
+
+        money.isPositive() shouldBe true
+        zeroMoney.isPositive() shouldBe false
+    }
+
+    @Test
+    fun isNegative() {
+        val money = Money.of(10000)
+
+        money.isNegative() shouldBe false
+    }
+
+    @Test
     fun isGreaterThan() {
         val money = Money.of(10000)
         val greaterMoney = Money.of(20000)
