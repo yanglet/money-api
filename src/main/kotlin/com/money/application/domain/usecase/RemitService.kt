@@ -11,6 +11,7 @@ import com.money.application.port.out.LoadMemberPort
 import com.money.application.port.out.LoadWalletLockPort
 import com.money.application.port.out.UpdateWalletPort
 import com.money.common.UseCase
+import org.springframework.cache.annotation.CacheEvict
 import org.springframework.transaction.annotation.Transactional
 
 @UseCase
@@ -22,6 +23,7 @@ class RemitService(
 ) : RemitUseCase {
 
     @Transactional
+    @CacheEvict(cacheNames = ["Remittance"], key = "#command.from", cacheManager = "customCacheManager")
     override fun remit(command: RemitCommand) {
         val toMember = loadMemberPort.loadMember(command.to)
         val toWallet = loadWalletLockPort.loadWalletLock(command.to)
