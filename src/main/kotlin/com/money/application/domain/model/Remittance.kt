@@ -44,6 +44,8 @@ data class Remittance(
 
     fun isFail() = this.status == FAIL
 
+    fun getRemittanceNo() = this.remittanceNo
+
     fun getTo() = this.to
 
     fun getFrom() = this.from
