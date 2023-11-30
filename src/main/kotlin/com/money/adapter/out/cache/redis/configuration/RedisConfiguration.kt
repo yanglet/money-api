@@ -1,4 +1,4 @@
-package com.money.adapter.out.persistence.redis.configuration
+package com.money.adapter.out.cache.redis.configuration
 
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean

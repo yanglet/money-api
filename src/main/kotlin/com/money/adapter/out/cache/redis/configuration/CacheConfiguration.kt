@@ -1,4 +1,4 @@
-package com.money.adapter.out.persistence.redis.configuration
+package com.money.adapter.out.cache.redis.configuration
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.SerializationFeature
