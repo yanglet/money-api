@@ -1,9 +1,10 @@
-package com.money.application.domain.usecase
+package com.money.application.domain.usecase.integration
 
 import com.money.adapter.out.persistence.jpa.MemberJpaEntity
 import com.money.adapter.out.persistence.jpa.MemberJpaRepository
 import com.money.adapter.out.persistence.jpa.WalletJpaRepository
 import com.money.application.domain.model.Money
+import com.money.application.domain.usecase.DepositService
 import com.money.application.port.`in`.dto.DepositCommand
 import com.money.common.exception.DataNotFoundException
 import com.money.domain.wallet.entity.WalletJpaEntity
