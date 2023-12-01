@@ -14,6 +14,5 @@ class MemberJpaEntity(
     @Enumerated(EnumType.STRING)
     @Column(name = "status", nullable = false)
     var status: MemberStatus = MemberStatus.ACTIVE
-
 ) : BaseEntity() {
 }

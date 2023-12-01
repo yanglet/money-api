@@ -24,10 +24,10 @@ import org.springframework.data.repository.findByIdOrNull
 @DataJpaTest
 @Import(WalletPersistenceAdapter::class)
 class WalletPersistenceAdapterJunit(
-    @Autowired private val walletPersistenceAdapter: WalletPersistenceAdapter,
+    @Autowired private val entityManager: EntityManager,
     @Autowired private val memberJpaRepository: MemberJpaRepository,
     @Autowired private val walletJpaRepository: WalletJpaRepository,
-    @Autowired private val entityManager: EntityManager
+    @Autowired private val walletPersistenceAdapter: WalletPersistenceAdapter
 ) {
 
     @AfterEach
@@ -73,9 +73,9 @@ class WalletPersistenceAdapterJunit(
         val walletJpaEntity = walletJpaRepository.save(WalletJpaEntity(member = memberJpaEntity, balance = 10000, maximumBalance = 100000))
 
         val updatedBalance = Money.of(walletJpaEntity.balance + 10000)
-        val updatedWallet = Wallet.of(
+        val updatedWallet = Wallet.withId(
             walletNo = walletJpaEntity.walletNo,
-            member = Member.of(memberNo = memberJpaEntity.memberNo, memberStatus = memberJpaEntity.status),
+            member = Member.withId(memberNo = memberJpaEntity.memberNo, memberStatus = memberJpaEntity.status),
             balance = updatedBalance,
             maximumBalance = Money.of(walletJpaEntity.maximumBalance)
         )

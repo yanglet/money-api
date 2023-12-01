@@ -8,6 +8,7 @@ import java.time.*
 @MappedSuperclass
 @EntityListeners(AuditingEntityListener::class)
 abstract class BaseEntity {
+
     @CreatedDate
     @Column(name = "insert_date", updatable = false)
     lateinit var insertDate: LocalDateTime
@@ -27,4 +28,5 @@ abstract class BaseEntity {
     @Column(name = "update_operator")
     lateinit var updateOperator: String
         protected set
+
 }

@@ -15,7 +15,7 @@ class MemberPersistenceAdapter(
     override fun loadMember(memberNo: Long): Member {
         val memberJpaEntity = memberJpaRepository.findByIdOrNull(memberNo) ?: throw DataNotFoundException("찾을 수 없는 회원입니다.")
 
-        return Member.of(
+        return Member.withId(
             memberNo = memberJpaEntity.memberNo,
             memberStatus = memberJpaEntity.status
         )

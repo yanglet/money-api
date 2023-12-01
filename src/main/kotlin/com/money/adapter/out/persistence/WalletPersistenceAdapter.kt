@@ -22,9 +22,9 @@ class WalletPersistenceAdapter(
         val memberJpaEntity = memberJpaRepository.findByMemberNoAndStatus(memberNo, ACTIVE) ?: throw DataNotFoundException("찾을 수 없는 회원입니다.")
         val walletJpaEntity = walletJpaRepository.findByMemberWithLock(memberJpaEntity) ?: throw DataNotFoundException("찾을 수 없는 지갑입니다.")
 
-        return Wallet.of(
+        return Wallet.withId(
             walletNo = walletJpaEntity.walletNo,
-            member = Member.of(memberJpaEntity.memberNo, memberJpaEntity.status),
+            member = Member.withId(memberJpaEntity.memberNo, memberJpaEntity.status),
             balance = Money.of(walletJpaEntity.balance),
             maximumBalance = Money.of(walletJpaEntity.maximumBalance)
         )

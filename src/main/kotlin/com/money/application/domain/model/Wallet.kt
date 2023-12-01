@@ -11,12 +11,13 @@ data class Wallet(
 ) {
 
     companion object {
-        fun of(
+        fun withId(
             walletNo: Long,
             member: Member,
             balance: Money,
             maximumBalance: Money
         ): Wallet {
+            require(walletNo > 0)
             require(balance.isPositiveOrZero())
             require(maximumBalance.isPositiveOrZero())
             return Wallet(walletNo, member, balance, maximumBalance)

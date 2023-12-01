@@ -1,4 +1,4 @@
-package com.money.domain.wallet
+package com.money.application.domain.usecase.integration
 
 import com.money.adapter.out.persistence.jpa.MemberJpaEntity
 import com.money.adapter.out.persistence.jpa.MemberJpaRepository
@@ -23,11 +23,9 @@ import java.util.concurrent.Executors
 @TestPropertySource(properties = ["spring.profiles.active = test"])
 class RemitBehaviorSpec(
     private val remittanceRepository: RemittanceJpaRepository,
-    private val remittanceService: RemitService,
-
     private val memberRepository: MemberJpaRepository,
-
     private val walletRepository: WalletJpaRepository,
+    private val remitService: RemitService,
 ): BehaviorSpec({
 
     afterTest {
@@ -48,7 +46,7 @@ class RemitBehaviorSpec(
         ).walletNo
 
         When("from 의 잔액이 부족한 송금 요청이 올 경우") {
-            remittanceService.remit(
+            remitService.remit(
                 RemitCommand(
                     from = fromMember.memberNo, to = toMember.memberNo, money = Money.of(160000)
                 )
@@ -79,7 +77,7 @@ class RemitBehaviorSpec(
         ).walletNo
 
         When("to 의 한도가 초과하는 송금 요청이 올 경우") {
-            remittanceService.remit(
+            remitService.remit(
                 RemitCommand(
                     from = fromMember.memberNo, to = toMember.memberNo, money = Money.of(210000)
                 )
@@ -110,7 +108,7 @@ class RemitBehaviorSpec(
         ).walletNo
 
         When("정상적인 송금 요청이 올 경우") {
-            remittanceService.remit(
+            remitService.remit(
                 RemitCommand(
                     from = fromMember.memberNo, to = toMember.memberNo, money = Money.of(110000)
                 )
@@ -159,7 +157,7 @@ class RemitBehaviorSpec(
             for (i: Int in 1..3) {
                 threadPool.submit {
                     try {
-                        remittanceService.remit(
+                        remitService.remit(
                             RemitCommand(
                                 from = fromMemberNos[i - 1], to = toMember.memberNo, money = Money.of(10000)
                             )

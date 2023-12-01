@@ -6,10 +6,11 @@ data class Member(
 ) {
 
     companion object {
-        fun of(
+        fun withId(
             memberNo: Long,
             memberStatus: MemberStatus
         ): Member {
+            require(memberNo > 0)
             return Member(memberNo, memberStatus)
         }
     }

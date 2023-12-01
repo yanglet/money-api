@@ -20,6 +20,7 @@ data class Remittance(
             remittanceStatus: RemittanceStatus,
             reason: String? = null
         ): Remittance {
+            require(remittanceNo > 0)
             require(to.isActive())
             require(from.isActive())
             require(amount.isPositive())

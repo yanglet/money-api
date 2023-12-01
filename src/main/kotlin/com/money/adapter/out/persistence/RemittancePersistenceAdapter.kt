@@ -47,8 +47,8 @@ class RemittancePersistenceAdapter(
         return remittanceJpaEntities.map {
             Remittance.withId(
                 remittanceNo = it.remittanceNo,
-                to = Member.of(it.to, ACTIVE),
-                from = Member.of(it.from, ACTIVE),
+                to = Member.withId(it.to, ACTIVE),
+                from = Member.withId(it.from, ACTIVE),
                 amount = Money.of(it.amount),
                 remittanceStatus = it.status,
                 reason = it.reason
