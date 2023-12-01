@@ -13,11 +13,11 @@ import io.kotest.matchers.shouldBe
 class WalletBehaviorSpec : BehaviorSpec({
 
     Given("deposit") {
-        val member = Member.of(
+        val member = Member.withId(
             memberNo = 1,
             MemberStatus.ACTIVE
         )
-        val wallet = Wallet.of(
+        val wallet = Wallet.withId(
             walletNo = 1,
             member = member,
             balance = Money.of(10000),
@@ -44,11 +44,11 @@ class WalletBehaviorSpec : BehaviorSpec({
     }
 
     Given("withdraw") {
-        val member = Member.of(
+        val member = Member.withId(
             memberNo = 1,
             MemberStatus.ACTIVE
         )
-        val wallet = Wallet.of(
+        val wallet = Wallet.withId(
             walletNo = 1,
             member = member,
             balance = Money.of(10000),

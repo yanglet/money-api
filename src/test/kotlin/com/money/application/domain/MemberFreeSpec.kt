@@ -8,13 +8,13 @@ import io.kotest.matchers.shouldBe
 class MemberFreeSpec : FreeSpec({
 
     "isActive" - {
-        val activeMember = Member.of(1, MemberStatus.ACTIVE)
+        val activeMember = Member.withId(1, MemberStatus.ACTIVE)
 
         activeMember.isActive() shouldBe true
     }
 
     "isNonActive" - {
-        val nonActiveMember = Member.of(1, MemberStatus.NON_ACTIVE)
+        val nonActiveMember = Member.withId(1, MemberStatus.NON_ACTIVE)
 
         nonActiveMember.isNonActive() shouldBe true
     }

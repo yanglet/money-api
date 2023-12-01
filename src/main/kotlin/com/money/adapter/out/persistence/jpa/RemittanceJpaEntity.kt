@@ -32,6 +32,5 @@ class RemittanceJpaEntity(
 
     @Column(name = "reason")
     var reason: String? = null
-
 ) : BaseEntity() {
 }

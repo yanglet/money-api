@@ -20,7 +20,6 @@ class WalletJpaEntity(
 
     @Column(name = "maximum_balance", nullable = false)
     var maximumBalance: Long
-
 ) : BaseEntity() {
 
     fun update(balance: Long, maximumBalance: Long) {
