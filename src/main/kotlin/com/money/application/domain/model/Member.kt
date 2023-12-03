@@ -11,6 +11,7 @@ data class Member(
             memberStatus: MemberStatus
         ): Member {
             require(memberNo > 0)
+
             return Member(memberNo, memberStatus)
         }
     }
