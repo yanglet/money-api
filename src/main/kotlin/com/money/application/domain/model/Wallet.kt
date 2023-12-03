@@ -20,6 +20,7 @@ data class Wallet(
             require(walletNo > 0)
             require(balance.isPositiveOrZero())
             require(maximumBalance.isPositiveOrZero())
+
             return Wallet(walletNo, member, balance, maximumBalance)
         }
     }
