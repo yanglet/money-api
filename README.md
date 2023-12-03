@@ -115,6 +115,10 @@
                                 └── RemitBehaviorSpec.kt
 ```
 
+### 헥사고날 아키텍처 (Hexagonal Architecture)
+```
+```
+
 ### 구현 사항
 ```
 - 크리티컬한 비즈니스이므로 비관적락을 통해 동시성 제어 ( Redisson pub/sub 을 통한 분산락 -> 비관적락으로 변경 )
