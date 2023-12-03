@@ -24,6 +24,7 @@ data class Remittance(
             require(to.isActive())
             require(from.isActive())
             require(amount.isPositive())
+
             return Remittance(remittanceNo, to, from, amount, remittanceStatus, reason)
         }
 
@@ -37,6 +38,7 @@ data class Remittance(
             require(to.isActive())
             require(from.isActive())
             require(amount.isPositive())
+
             return Remittance(null, to, from, amount, remittanceStatus, reason)
         }
     }
