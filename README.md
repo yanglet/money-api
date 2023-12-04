@@ -115,8 +115,18 @@
                                 └── RemitBehaviorSpec.kt
 ```
 
-### 헥사고날 아키텍처 (Hexagonal Architecture)
+### 헥사고날 아키텍처 Hexagonal Architecture
+![image](https://github.com/yanglet/money-api/assets/96788792/336f8920-4bee-4d89-9972-6febbbeb619e)
 ```
+Layerd Architecture 와 비교해서 쉽게 설명하면?
+- Web Adapter ( = Controller ) → Input Port 를 의존
+- Persistence Adapter ( = Repository 를 가지고 있는 클래스 ) → Output Port 의 구현체, ORM 의존
+- UseCase ( = Service ) → Input Port 의 구현체, Output Port 의존
+- Entity ( = 순수 Domain Model )
+
+*** 비즈니스 로직에 집중하기 떄문에 효과적인 테스트 코드 작성이 가능하다. ***
+유스케이스가 잘 보인다.
+병렬로 협업이 더 수월해진다. ( 물론 도메인 모델에서 충돌이 날 수 있을 것 같다. -> 이러면 잘못된건가 ,, ? )
 ```
 
 ### 구현 사항
