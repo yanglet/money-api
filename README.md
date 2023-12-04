@@ -121,7 +121,7 @@
 ```
 Layerd Architecture 와 비교해서 쉽게 설명하면?
 - Web Adapter ( = Controller ) → Input Port 를 의존
-- Persistence Adapter ( = Repository 를 가지고 있는 클래스 ) → Output Port 의 구현체, ORM 의존
+- Persistence Adapter ( = Repository ) → Output Port 의 구현체, ORM 의존
 - UseCase ( = Service ) → Input Port 의 구현체, Output Port 의존
 - Entity ( = 순수 Domain Model )
 
