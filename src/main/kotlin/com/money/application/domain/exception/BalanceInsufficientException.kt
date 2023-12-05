@@ -1,4 +1,6 @@
 package com.money.application.domain.exception
 
-class BalanceInsufficientException(message: String) : RuntimeException(message) {
+import com.money.common.exception.BusinessException
+
+class BalanceInsufficientException(message: String) : BusinessException(message) {
 }

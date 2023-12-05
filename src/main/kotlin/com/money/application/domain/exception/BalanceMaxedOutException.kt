@@ -1,4 +1,6 @@
 package com.money.application.domain.exception
 
-class BalanceMaxedOutException(message: String) : RuntimeException(message) {
+import com.money.common.exception.BusinessException
+
+class BalanceMaxedOutException(message: String) : BusinessException(message) {
 }
