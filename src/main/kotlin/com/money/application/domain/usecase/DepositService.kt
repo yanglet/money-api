@@ -16,7 +16,7 @@ class DepositService(
     @Transactional
     override fun deposit(memberNo: Long, command: DepositCommand) {
         val wallet = loadWalletLockPort.loadWalletLock(memberNo)
-        wallet.deposit(command.amount)
+        wallet.deposit(command.money)
         updateWalletPort.updateWallet(wallet)
     }
 
