@@ -29,10 +29,13 @@
 │   │           │   │   └── web
 │   │           │   │       ├── RemittanceController.kt
 │   │           │   │       ├── WalletController.kt
-│   │           │   │       └── dto
-│   │           │   │           ├── DepositRequest.kt
-│   │           │   │           ├── ReadRemittancesResponse.kt
-│   │           │   │           └── RemitRequest.kt
+│   │           │   │       ├── dto
+│   │           │   │       │   ├── DepositRequest.kt
+│   │           │   │       │   ├── ReadRemittancesResponse.kt
+│   │           │   │       │   └── RemitRequest.kt
+│   │           │   │       └── exception
+│   │           │   │           ├── ExceptionResponse.kt
+│   │           │   │           └── RestExceptionHandler.kt
 │   │           │   └── out
 │   │           │       ├── cache
 │   │           │       │   └── redis
@@ -84,13 +87,19 @@
 │   │           │           ├── LoadMemberPort.kt
 │   │           │           ├── LoadRemittancesPort.kt
 │   │           │           ├── LoadWalletLockPort.kt
-│   │           │           └── UpdateWalletPort.kt
+│   │           │           ├── UpdateWalletPort.kt
+│   │           │           └── dto
+│   │           │               ├── CreateRemittanceCommand.kt
+│   │           │               └── UpdateWalletCommand.kt
 │   │           └── common
 │   │               ├── PersistenceAdapter.kt
 │   │               ├── UseCase.kt
 │   │               ├── WebAdapter.kt
-│   │               └── exception
-│   │                   └── DataNotFoundException.kt
+│   │               ├── exception
+│   │               │   ├── BusinessException.kt
+│   │               │   └── DataNotFoundException.kt
+│   │               └── log
+│   │                   └── Log.kt
 │   └── resources
 │       ├── application-local.yml
 │       ├── application-test.yml
