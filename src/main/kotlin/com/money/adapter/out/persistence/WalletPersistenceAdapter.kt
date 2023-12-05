@@ -8,6 +8,7 @@ import com.money.application.domain.model.Money
 import com.money.application.domain.model.Wallet
 import com.money.application.port.out.LoadWalletLockPort
 import com.money.application.port.out.UpdateWalletPort
+import com.money.application.port.out.dto.UpdateWalletCommand
 import com.money.common.PersistenceAdapter
 import com.money.common.exception.DataNotFoundException
 import org.springframework.data.repository.findByIdOrNull
@@ -30,11 +31,11 @@ class WalletPersistenceAdapter(
         )
     }
 
-    override fun updateWallet(wallet: Wallet) {
-        val walletJpaEntity = walletJpaRepository.findByIdOrNull(wallet.getWalletNo()) ?: throw DataNotFoundException("찾을 수 없는 지갑입니다.")
+    override fun updateWallet(command: UpdateWalletCommand) {
+        val walletJpaEntity = walletJpaRepository.findByIdOrNull(command.walletNo) ?: throw DataNotFoundException("찾을 수 없는 지갑입니다.")
         walletJpaEntity.update(
-            balance = wallet.getBalance().getAmount(),
-            maximumBalance = wallet.getMaximumBalance().getAmount()
+            balance = command.balance.getAmount(),
+            maximumBalance = command.maximumBalance.getAmount()
         )
     }
 

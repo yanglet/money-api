@@ -1,7 +1,7 @@
 package com.money.application.port.out
 
-import com.money.application.domain.model.Remittance
+import com.money.application.port.out.dto.CreateRemittanceCommand
 
 interface CreateRemittancePort {
-    fun createRemittance(remittance: Remittance)
+    fun createRemittance(command: CreateRemittanceCommand)
 }

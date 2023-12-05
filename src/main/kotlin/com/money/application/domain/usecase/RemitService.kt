@@ -10,6 +10,8 @@ import com.money.application.port.out.CreateRemittancePort
 import com.money.application.port.out.LoadMemberPort
 import com.money.application.port.out.LoadWalletLockPort
 import com.money.application.port.out.UpdateWalletPort
+import com.money.application.port.out.dto.CreateRemittanceCommand
+import com.money.application.port.out.dto.UpdateWalletCommand
 import com.money.common.UseCase
 import org.springframework.cache.annotation.CacheEvict
 import org.springframework.transaction.annotation.Transactional
@@ -61,9 +63,9 @@ class RemitService(
                 )
             }
         )
-        updateWalletPort.updateWallet(fromWallet)
-        updateWalletPort.updateWallet(toWallet)
-        createRemittancePort.createRemittance(remittance)
+        updateWalletPort.updateWallet(UpdateWalletCommand.from(fromWallet))
+        updateWalletPort.updateWallet(UpdateWalletCommand.from(toWallet))
+        createRemittancePort.createRemittance(CreateRemittanceCommand.from(remittance))
     }
 
 }
