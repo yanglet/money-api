@@ -5,10 +5,10 @@ import com.money.common.exception.DataNotFoundException
 import com.money.common.log.Log
 import org.springframework.boot.json.JsonParseException
 import org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR
+import org.springframework.http.HttpStatus.BAD_REQUEST
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice
-import sun.security.timestamp.TSResponse.BAD_REQUEST
 
 @RestControllerAdvice
 class RestExceptionHandler : Log {

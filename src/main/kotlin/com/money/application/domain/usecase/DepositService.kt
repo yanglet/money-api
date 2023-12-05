@@ -4,6 +4,7 @@ import com.money.application.port.`in`.DepositUseCase
 import com.money.application.port.`in`.dto.DepositCommand
 import com.money.application.port.out.LoadWalletLockPort
 import com.money.application.port.out.UpdateWalletPort
+import com.money.application.port.out.dto.UpdateWalletCommand
 import com.money.common.UseCase
 import org.springframework.transaction.annotation.Transactional
 
@@ -17,7 +18,7 @@ class DepositService(
     override fun deposit(memberNo: Long, command: DepositCommand) {
         val wallet = loadWalletLockPort.loadWalletLock(memberNo)
         wallet.deposit(command.money)
-        updateWalletPort.updateWallet(wallet)
+        updateWalletPort.updateWallet(UpdateWalletCommand.from(wallet))
     }
 
 }

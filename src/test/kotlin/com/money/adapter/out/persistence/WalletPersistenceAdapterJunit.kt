@@ -8,6 +8,7 @@ import com.money.application.domain.model.MemberStatus.ACTIVE
 import com.money.application.domain.model.MemberStatus.NON_ACTIVE
 import com.money.application.domain.model.Money
 import com.money.application.domain.model.Wallet
+import com.money.application.port.out.dto.UpdateWalletCommand
 import com.money.common.exception.DataNotFoundException
 import com.money.domain.wallet.entity.WalletJpaEntity
 import io.kotest.matchers.shouldBe
@@ -80,7 +81,7 @@ class WalletPersistenceAdapterJunit(
             maximumBalance = Money.of(walletJpaEntity.maximumBalance)
         )
 
-        walletPersistenceAdapter.updateWallet(updatedWallet)
+        walletPersistenceAdapter.updateWallet(UpdateWalletCommand.from(updatedWallet))
 
         val result = walletJpaRepository.findByIdOrNull(walletJpaEntity.walletNo) ?: throw DataNotFoundException("")
 
