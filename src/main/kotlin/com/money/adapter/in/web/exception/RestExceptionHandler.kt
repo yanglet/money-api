@@ -55,5 +55,4 @@ class RestExceptionHandler : Log {
             ExceptionResponse(e.message, e)
         )
     }
-
 }

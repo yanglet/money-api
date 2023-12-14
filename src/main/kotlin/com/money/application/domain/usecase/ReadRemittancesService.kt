@@ -14,5 +14,4 @@ class ReadRemittancesService(
     @Transactional(readOnly = true)
     @Cacheable(cacheNames = ["Remittance"], key = "#memberNo", cacheManager = "customCacheManager")
     override fun readRemittances(memberNo: Long) = loadRemittancesPort.readRemittances(memberNo)
-
 }

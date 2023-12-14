@@ -46,5 +46,4 @@ class CacheConfiguration : CachingConfigurer {
             .cacheDefaults(config)
             .build()
     }
-
 }

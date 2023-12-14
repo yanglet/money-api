@@ -58,5 +58,4 @@ data class Remittance(
     fun getStatus() = this.status
 
     fun getReason() = this.reason
-
 }

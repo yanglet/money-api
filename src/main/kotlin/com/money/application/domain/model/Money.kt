@@ -29,5 +29,4 @@ data class Money(
     fun plus(money: Money) {
         this.amount += money.amount
     }
-
 }

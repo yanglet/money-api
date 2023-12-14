@@ -67,5 +67,4 @@ class RemitService(
         updateWalletPort.updateWallet(UpdateWalletCommand.from(toWallet))
         createRemittancePort.createRemittance(CreateRemittanceCommand.from(remittance))
     }
-
 }

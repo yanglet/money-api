@@ -23,5 +23,4 @@ data class Member(
     fun getStatus() = this.status
 
     fun getMemberNo() = this.memberNo
-
 }

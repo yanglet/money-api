@@ -27,5 +27,4 @@ class WalletController(
         val command = DepositCommand(Money.of(request.amount))
         depositUseCase.deposit(memberNo, command)
     }
-
 }

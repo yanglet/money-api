@@ -13,5 +13,4 @@ data class RemitCommand(
         require(from > 0)
         require(money.isPositive())
     }
-
 }

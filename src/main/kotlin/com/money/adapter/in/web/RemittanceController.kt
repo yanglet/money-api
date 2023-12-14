@@ -33,5 +33,4 @@ class RemittanceController(
             result.map { ReadRemittancesResponse.from(it) }
         )
     }
-
 }

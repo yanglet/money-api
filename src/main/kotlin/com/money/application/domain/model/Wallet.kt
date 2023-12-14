@@ -50,5 +50,4 @@ data class Wallet(
         }
         this.balance.minus(money)
     }
-
 }

@@ -20,5 +20,4 @@ class MemberPersistenceAdapter(
             memberStatus = memberJpaEntity.status
         )
     }
-
 }

@@ -20,5 +20,4 @@ class DepositService(
         wallet.deposit(command.money)
         updateWalletPort.updateWallet(UpdateWalletCommand.from(wallet))
     }
-
 }

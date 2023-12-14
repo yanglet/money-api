@@ -9,5 +9,4 @@ data class DepositCommand(
     init {
         require(money.isPositiveOrZero())
     }
-
 }

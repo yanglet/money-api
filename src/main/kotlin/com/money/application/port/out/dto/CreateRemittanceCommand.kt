@@ -21,5 +21,4 @@ data class CreateRemittanceCommand(
             reason = remittance.getReason()
         )
     }
-
 }

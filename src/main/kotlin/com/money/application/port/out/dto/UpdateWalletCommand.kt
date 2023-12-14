@@ -16,5 +16,4 @@ data class UpdateWalletCommand(
             maximumBalance = wallet.getMaximumBalance()
         )
     }
-
 }

@@ -13,5 +13,4 @@ class RedisConfiguration(
 
     @Bean
     fun redisConnectionFactory(): LettuceConnectionFactory = LettuceConnectionFactory(host, port.toInt())
-
 }

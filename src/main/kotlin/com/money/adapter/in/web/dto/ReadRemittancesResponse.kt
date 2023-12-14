@@ -23,5 +23,4 @@ data class ReadRemittancesResponse(
             reason = remittance.getReason()
         )
     }
-
 }

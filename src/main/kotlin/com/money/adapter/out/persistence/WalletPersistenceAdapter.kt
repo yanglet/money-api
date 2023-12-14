@@ -38,5 +38,4 @@ class WalletPersistenceAdapter(
             maximumBalance = command.maximumBalance.getAmount()
         )
     }
-
 }
