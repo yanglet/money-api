@@ -155,7 +155,7 @@ Kotest 5.5.5, Kotest Extensions 1.1.3
 - 크리티컬한 비즈니스이므로 비관적락을 통해 동시성 제어 ( Redisson pub/sub 을 통한 분산락 -> 비관적락으로 변경 )
   * Redis 분산락을 건 서버가 장애날 경우
   -> Redisson 의 SpinLock형태를 이용해서 default timeout 이 발생하거나 영구적으로 해당 유저는 Redis 키가 삭제될때 까지 트랜잭션이 실패하는 이슈가 발생
-  -> 그렇다고 여러 대 두기엔 오베 엔지니어링일 수 있다.
+  -> 그렇다고 여러 대 두기엔 오버 엔지니어링일 수 있다.
   * redisson pub/sub 은 lettuce 의 spin lock 보다 개선된 것은 맞지만 spin lock 로직이 내부에 일부 있다.
   * Redis에 작업을 건 프로세스가 컨텍스트 스위칭이나 특정 블럭킹으로 시간이 오래걸리면 Key 가 Expire 되면서 중복 작업이 발생할 수 있다.
 
